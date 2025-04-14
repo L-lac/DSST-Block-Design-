@@ -15,7 +15,8 @@ df['SetType'] = df['SetType'].astype(str).str.strip().str.lower()
 df.reset_index(drop=True, inplace=True)
 
 # Function to split into blocks based on spacing (NaNs)
-def get_blocks_from_spacing(df, set_num=None, set_type=None): filtered = df.copy()
+def get_blocks_from_spacing(df, set_num=None, set_type=None): 
+    filtered = df.copy()
     if set_num is not None:
         filtered = filtered[filtered['SetNum'].eq(set_num) | filtered['SetNum'].isna()]
     if set_type is not None:
