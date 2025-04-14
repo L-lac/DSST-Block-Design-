@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 # Load the DSST file
-file_path = "your_file_path.csv"
+file_path = 
 df = pd.read_csv(file_path)
 
 # Clean and prepare the dataset
