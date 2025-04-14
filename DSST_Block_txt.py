@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 # Load the DSST file
-file_path = 
+file_path = "CBAS0005_dsst_2025-02-13_10h51.49.847.csv"
 df = pd.read_csv(file_path)
 
 # Clean and prepare the dataset
