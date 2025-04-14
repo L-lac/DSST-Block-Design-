@@ -16,11 +16,13 @@ df.reset_index(drop=True, inplace=True)
 
 # Function to split into blocks based on spacing (NaNs)
 def get_blocks_from_spacing(df, set_num=None, set_type=None): 
-    filtered = df.copy()
-    if set_num is not None:
-        filtered = filtered[filtered['SetNum'].eq(set_num) | filtered['SetNum'].isna()]
-    if set_type is not None:
-        filtered = filtered[filtered['SetType'].eq(set_type) | filtered['SetType'].isna()]
+    #Preserve NaNs so we can detect block boundaries
+    if set_num is not None and set_type is not None:
+        filtered = filtered[((df['SetNum'] == set_num) & (df['SetType'] == set_type)) | (df['SetNum'].isna()) | (df['SetType'].isna())]
+    elif set_num is not None:
+        filtered = filtered[(df['SetNum'] == set_num) | df['SetNum'].isna()]
+    elif set_type is not None:
+        filtered = filtered[(df['SetType'] == set_type) | df['SetType'].isna()]
 
     filtered = filtered.reset_index(drop=True)
 
